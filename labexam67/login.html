@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear & Clean Service</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- หน้าหลักเลือกประเภทผู้ใช้ -->
+    <div class="container" id="user-select">
+        <h1>Clear & Clean Service</h1>
+        <div class="role-selection">
+            <div class="role">
+                <img src="maid-icon.png" alt="แม่บ้าน">
+                <button onclick="selectRole('maid')">แม่บ้าน</button>
+            </div>
+            <div class="role">
+                <img src="user-icon.png" alt="ผู้ใช้งาน">
+                <button onclick="selectRole('user')">ผู้ใช้งาน</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- หน้าเข้าสู่ระบบ -->
+    <div class="container" id="login" style="display: none;">
+        <h2>เข้าสู่ระบบผู้ใช้งาน</h2>
+        <div>
+            <label for="username">ชื่อผู้ใช้:</label>
+            <input type="text" id="username" placeholder="กรอกชื่อผู้ใช้">
+        </div>
+        <div>
+            <label for="password">รหัสผ่าน:</label>
+            <input type="password" id="password" placeholder="กรอกรหัสผ่าน">
+        </div>
+        <button onclick="login()">เข้าสู่ระบบ</button>
+        <p id="login-error" style="color: red; display: none;">เข้าสู่ระบบไม่สำเร็จ</p>
+        <a href="#" onclick="showRegistration()">ลงทะเบียน</a>
+    </div>
+
+    <!-- หน้าลงทะเบียน -->
+    <div class="container" id="register" style="display: none;">
+        <h2>สมัครสมาชิกผู้ใช้งาน</h2>
+        <div>
+            <label for="reg-username">ชื่อผู้ใช้:</label>
+            <input type="text" id="reg-username" placeholder="กรอกชื่อผู้ใช้">
+        </div>
+        <div>
+            <label for="reg-password">รหัสผ่าน:</label>
+            <input type="password" id="reg-password" placeholder="กรอกรหัสผ่าน">
+        </div>
+        <button onclick="register()">สมัครสมาชิก</button>
+        <p id="register-error" style="color: red; display: none;">ชื่อผู้ใช้นี้ถูกใช้แล้ว</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

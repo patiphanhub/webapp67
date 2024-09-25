@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อมูลส่วนตัว</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>ข้อมูลส่วนตัว</h2>
+
+        <!-- ส่วนของโปรไฟล์ -->
+        <div class="profile-section">
+            <label for="profile-pic" id="profile-pic-label">
+                <img id="profile-pic-preview" src="default-profile.png" alt="รูปโปรไฟล์" />
+            </label>
+            <input type="file" id="profile-pic" accept="image/*" style="display: none;" onchange="changeProfilePic(event)">
+        </div>
+
+        <!-- ข้อมูลส่วนตัว -->
+        <div class="personal-info">
+            <p>ชื่อ: <span id="display-first-name"></span></p>
+            <p>นามสกุล: <span id="display-last-name"></span></p>
+            <p>อีเมล: <span id="display-email"></span></p>
+            <p>เบอร์โทร: <span id="display-phone"></span></p>
+            <p>ชื่อผู้ใช้: <span id="display-username"></span></p>
+        </div>
+
+        <button onclick="goBack()">ย้อนกลับไปแก้ไขข้อมูล</button>
+    </div>
+
+    <script>
+        // ดึงข้อมูลจาก LocalStorage และแสดงผล
+        document.getElementById('display-first-name').textContent = localStorage.getItem('firstName');
+        document.getElementById('display-last-name').textContent = localStorage.getItem('lastName');
+        document.getElementById('display-email').textContent = localStorage.getItem('email');
+        document.getElementById('display-phone').textContent = localStorage.getItem('phone');
+        document.getElementById('display-username').textContent = localStorage.getItem('username');
+
+        // ฟังก์ชันสำหรับเปลี่ยนรูปโปรไฟล์
+        function changeProfilePic(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-pic-preview').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // ฟังก์ชันย้อนกลับไปหน้าแก้ไขข้อมูล
+        function goBack() {
+            window.location.href = 'register.html'; // แก้ไขให้เป็นหน้าลงทะเบียนที่คุณมี
+        }
+    </script>
+</body>
+</html>
